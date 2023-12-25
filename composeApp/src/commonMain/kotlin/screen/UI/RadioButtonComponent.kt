@@ -18,7 +18,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun RadioButtonElement() {
+fun RadioButtonComponent() {
     val fruit = listOf("Apple", "Papaya", "Banana", "Orange")
     var selectedValue by remember { mutableStateOf(fruit[0]) }
 

@@ -14,17 +14,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import screen.UI.ButtonZone
-import screen.UI.RadioButtonElement
+import screen.UI.ButtonComponent
+import screen.UI.RadioButtonComponent
+import screen.UI.SliderComponent
 
 
 @Composable
 fun MixScreen() {
     Column(Modifier.fillMaxSize().padding(20.dp)) {
-        ButtonZone()
+        ButtonComponent()
         line()
-        RadioButtonElement()
+        RadioButtonComponent()
         line()
+        SliderComponent()
 
     }
 }
