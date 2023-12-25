@@ -1,10 +1,10 @@
 package screen.UI
 
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.Slider
@@ -21,64 +21,63 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SliderComponent() {
-    LazyColumn(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
 
-        item {
-            var sliderPosition by remember { mutableStateOf(0f) }
-            Slider(value = sliderPosition, onValueChange = { sliderPosition = it })
-            Text(text = "Basic Slider value : ${(sliderPosition * 100).toInt()}")
-            Spacer(Modifier.padding(10.dp))
-        }
 
-        item {
-            var sliderPosition by remember { mutableStateOf(0f) }
-            Slider(
-                value = sliderPosition, onValueChange = { sliderPosition = it },
-                colors = SliderDefaults.colors(
-                    thumbColor = MaterialTheme.colorScheme.secondary,
-                    activeTrackColor = MaterialTheme.colorScheme.secondary,
-                    inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer
-                ),
-                steps = 3,
-                valueRange = 0f..100f
-            )
-            Text(text = "Slider With step value : ${(sliderPosition).toInt()}")
-            Spacer(Modifier.padding(15.dp))
-        }
-        item {
-            var sliderPosition by remember { mutableStateOf(0f..100f) }
-            RangeSlider(
-                value = sliderPosition,
-                onValueChange = { range -> sliderPosition = range },
-                valueRange = 0f..100f
-            )
-            Text("Range Slide with Step : ${sliderPosition.round().first}% <-> ${sliderPosition.round().last}%")
-            Spacer(Modifier.padding(15.dp))
-        }
+        var basicSliderPosition by remember { mutableStateOf(0f) }
+        Slider(value = basicSliderPosition, onValueChange = { basicSliderPosition = it })
+        Text(text = "Basic Slider value : ${(basicSliderPosition * 100).toInt()}")
+        Spacer(Modifier.padding(10.dp))
 
-        item {
-            var sliderPosition by remember { mutableStateOf(0f..100f) }
-            RangeSlider(
-                value = sliderPosition,
-                steps = 19,
-                onValueChange = { range -> sliderPosition = range },
-                valueRange = 0f..100f
-            )
-            Text("Range Slide with Step : ${sliderPosition.round().first}% <-> ${sliderPosition.round().last}%")
-            Spacer(Modifier.padding(15.dp))
-        }
+
+        var stepSliderPosition by remember { mutableStateOf(0f) }
+        Slider(
+            value = stepSliderPosition,
+            onValueChange = { stepSliderPosition = it },
+            colors = SliderDefaults.colors(
+                thumbColor = MaterialTheme.colorScheme.secondary,
+                activeTrackColor = MaterialTheme.colorScheme.secondary,
+                inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer
+            ),
+            steps = 3,
+            valueRange = 0f..100f
+        )
+        Text(text = "Slider With step value : ${(stepSliderPosition).toInt()}")
+        Spacer(Modifier.padding(15.dp))
+
+
+        var rangeWithoutStepSliderPosition by remember { mutableStateOf(0f..100f) }
+        RangeSlider(
+            value = rangeWithoutStepSliderPosition,
+            onValueChange = { range -> rangeWithoutStepSliderPosition = range },
+            valueRange = 0f..100f
+        )
+        Text("Range Slide with Step : ${rangeWithoutStepSliderPosition.round().first}% <-> ${rangeWithoutStepSliderPosition.round().last}%")
+        Spacer(Modifier.padding(15.dp))
+
+
+        var rangeWithStepPosition by remember { mutableStateOf(0f..100f) }
+        RangeSlider(
+            value = rangeWithStepPosition,
+            steps = 19,
+            onValueChange = { range -> rangeWithStepPosition = range },
+            valueRange = 0f..100f
+        )
+        Text("Range Slide with Step : ${rangeWithStepPosition.round().first}% <-> ${rangeWithStepPosition.round().last}%")
+        Spacer(Modifier.padding(15.dp))
+
 
     }
 
 }
 
-fun ClosedFloatingPointRange<Float>.round(): IntRange {
+private fun ClosedFloatingPointRange<Float>.round(): IntRange {
     val roundedStart = start.roundToNearestInteger()
     val roundedEnd = endInclusive.roundToNearestInteger()
 
     return roundedStart..roundedEnd
 }
 
-fun Float.roundToNearestInteger(): Int {
+private fun Float.roundToNearestInteger(): Int {
     return this.toInt()
 }
