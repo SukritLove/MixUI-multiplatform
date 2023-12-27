@@ -120,7 +120,7 @@ private fun SwitchWithFunction() {
             })
             Text("YELLOW")
         }
-        val getColor = FindColor(red, blue, yellow)
+        val getColor = findColor(red, blue, yellow)
         Spacer(Modifier.padding(15.dp))
         Card(Modifier.size(100.dp)) {
             Column(
@@ -135,7 +135,7 @@ private fun SwitchWithFunction() {
 
 }
 
-fun FindColor(red: Boolean, blue: Boolean, yellow: Boolean): Pair<Color, String> {
+private fun findColor(red: Boolean, blue: Boolean, yellow: Boolean): Pair<Color, String> {
 
     val colorData = MixColorData()
     return when {
