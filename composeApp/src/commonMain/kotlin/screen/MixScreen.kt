@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import screen.UI.ButtonComponent
+import screen.UI.FloatingButtonComponent
 import screen.UI.RadioButtonComponent
 import screen.UI.SliderComponent
 import screen.UI.SwitchComponent
@@ -38,6 +39,10 @@ fun MixScreen() {
         }
         item {
             SwitchComponent()
+            line()
+        }
+        item {
+            FloatingButtonComponent()
             line()
         }
     }

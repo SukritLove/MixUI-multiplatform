@@ -91,16 +91,6 @@ fun ResetSwitch() {
 
 }
 
-
-private fun Reset(sw: Boolean, count: Int): Triple<Boolean, Boolean, Int> {
-    return if (count > 3) {
-        Triple(true, false, 0)
-    } else {
-        Triple(false, sw, 0)
-    }
-}
-
-
 @Composable
 private fun SwitchWithFunction() {
     var red by remember { mutableStateOf(false) }
